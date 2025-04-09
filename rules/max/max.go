@@ -1,7 +1,6 @@
 package min
 
 import (
-	"fmt"
 	"github.com/masilvasql/slimstructvalidator/core"
 	"github.com/masilvasql/slimstructvalidator/i18n"
 	"reflect"
@@ -16,10 +15,10 @@ func Max(value interface{}, param string, label string, kind reflect.Kind) *core
 	maxVal, err := strconv.ParseFloat(param, 64)
 	if err != nil {
 		return &core.FieldError{
-			Field:   param,
+			Field:   label,
 			Tag:     "max",
 			Value:   value,
-			Message: fmt.Sprintf("valor mínimo inválido: %s", param),
+			Message: i18n.TError("invalidValue", "max", param),
 		}
 	}
 

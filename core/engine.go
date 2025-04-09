@@ -34,6 +34,17 @@ func ValidateStruct(s interface{}) []*FieldError {
 		field := val.Field(i)
 		fieldType := typ.Field(i)
 
+		if !field.CanInterface() {
+			continue
+		}
+
+		// 🌀 Validação recursiva se for struct (e não tempo ou slice/map/etc)
+		if field.Kind() == reflect.Struct && field.Type().PkgPath() != "time" {
+			nestedErrs := ValidateStruct(field.Interface())
+			errs = append(errs, nestedErrs...)
+			continue
+		}
+
 		tag := fieldType.Tag.Get("validate")
 		label := fieldType.Tag.Get("label")
 
@@ -46,28 +57,42 @@ func ValidateStruct(s interface{}) []*FieldError {
 			ruleName := t
 			param := ""
 
-			// Captura regras no formato "min=3"
-			if parts := strings.SplitN(t, "=", 2); len(parts) == 2 {
-				ruleName = parts[0]
-				param = parts[1]
-			}
-
-			// Regras com param
-			if fn, ok := registeredRulesWithParam[ruleName]; ok {
-				if err := fn(field.Interface(), param, label, field.Kind()); err != nil {
-					errs = append(errs, err)
-				}
+			err := validateRulesWithParam(ruleName, param, t, field, label)
+			if err != nil {
+				errs = append(errs, err)
 				continue
 			}
 
-			// Regras simples
-			if fn, ok := registeredRules[ruleName]; ok {
-				if err := fn(field.Interface(), label, field.Kind()); err != nil {
-					errs = append(errs, err)
-				}
+			err = validateSimpleRules(ruleName, field, label)
+			if err != nil {
+				errs = append(errs, err)
+				continue
 			}
 		}
 	}
 
 	return errs
+}
+
+func validateRulesWithParam(ruleName string, param string, t string, field reflect.Value, label string) *FieldError {
+	if parts := strings.SplitN(t, "=", 2); len(parts) == 2 {
+		ruleName = parts[0]
+		param = parts[1]
+	}
+
+	if fn, ok := registeredRulesWithParam[ruleName]; ok {
+		if err := fn(field.Interface(), param, label, field.Kind()); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func validateSimpleRules(ruleName string, field reflect.Value, label string) *FieldError {
+	if fn, ok := registeredRules[ruleName]; ok {
+		if err := fn(field.Interface(), label, field.Kind()); err != nil {
+			return err
+		}
+	}
+	return nil
 }
