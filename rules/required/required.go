@@ -10,7 +10,7 @@ func init() {
 	core.RegisterRule("required", Required)
 }
 
-func Required(value interface{}, label string, kind reflect.Kind) *core.FieldError {
+func Required(value interface{}, label string, _ reflect.Kind) *core.FieldError {
 	v := reflect.ValueOf(value)
 	zero := reflect.Zero(v.Type()).Interface()
 

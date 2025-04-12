@@ -18,7 +18,7 @@ func Min(value interface{}, param string, label string, kind reflect.Kind) *core
 			Field:   param,
 			Tag:     "min",
 			Value:   value,
-			Message: i18n.TError("invalidValue", "max", param),
+			Message: i18n.TError("invalidValue", "min", param),
 		}
 	}
 
