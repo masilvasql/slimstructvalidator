@@ -18,7 +18,6 @@ func Equals(value interface{}, param string, label string, kind reflect.Kind) *c
 		field = "Este campo"
 	}
 
-	// Converte o valor para string
 	var valueString string
 	switch kind {
 	case reflect.String:

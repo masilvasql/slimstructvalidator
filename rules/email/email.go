@@ -15,11 +15,11 @@ func init() {
 
 func Email(value interface{}, label string, kind reflect.Kind) *core.FieldError {
 	str, ok := value.(string)
-	if !ok || str == "" {
+	if !ok {
 		return nil
 	}
 
-	if !emailRegex.MatchString(str) {
+	if !emailRegex.MatchString(str) || len(str) == 0 {
 		field := label
 		if field == "" {
 			field = "Este campo"

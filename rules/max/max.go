@@ -1,4 +1,4 @@
-package min
+package max
 
 import (
 	"github.com/masilvasql/slimstructvalidator/core"

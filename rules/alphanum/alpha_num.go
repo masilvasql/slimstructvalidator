@@ -22,7 +22,7 @@ func AlphaNum(value interface{}, label string, kind reflect.Kind) *core.FieldErr
 	if v.Kind() == reflect.String {
 		str := v.String()
 		for _, r := range str {
-			if !unicode.IsLetter(r) || !unicode.IsNumber(r) {
+			if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
 				return &core.FieldError{
 					Field:   field,
 					Tag:     "alphaNum",
