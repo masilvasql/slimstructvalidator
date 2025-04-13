@@ -8,9 +8,11 @@ import (
 	_ "github.com/masilvasql/slimstructvalidator/rules/equals"
 	_ "github.com/masilvasql/slimstructvalidator/rules/max"
 	_ "github.com/masilvasql/slimstructvalidator/rules/min"
+	_ "github.com/masilvasql/slimstructvalidator/rules/notequals"
 	_ "github.com/masilvasql/slimstructvalidator/rules/numeric"
 	_ "github.com/masilvasql/slimstructvalidator/rules/oneof"
 	_ "github.com/masilvasql/slimstructvalidator/rules/required"
+	_ "github.com/masilvasql/slimstructvalidator/rules/url"
 )
 
 type Validator struct{}

@@ -21,6 +21,8 @@ var translations = map[string]string{
 	"pt-BR|numeric":      "%s deve conter apenas números",
 	"pt-BR|oneOf":        "%s deve ser um dos valores: %s",
 	"pt-BR|eq":           "%s deve ser igual a %s",
+	"pt-BR|ne":           "%s não deve ter valor igual a %s",
+	"pt-BR|url":          "%s deve ser uma URL válida",
 
 	"en-US|required":     "%s is required",
 	"en-US|email":        "%s must be a valid email address",
@@ -32,6 +34,8 @@ var translations = map[string]string{
 	"en-US|numeric":      "%s must contain only numbers",
 	"en-US|oneOf":        "%s must be one of the values: %s",
 	"en-US|eq":           "%s must be equal to %s",
+	"en-US|ne":           "%s must not be equal to %s",
+	"en-US|url":          "%s must be a valid URL",
 
 	"es-ES|required":     "%s es obligatorio",
 	"es-ES|email":        "%s debe ser una dirección de correo electrónico válida",
@@ -43,4 +47,6 @@ var translations = map[string]string{
 	"es-ES|numeric":      "%s debe contener solo números",
 	"es-ES|oneOf":        "%s debe ser uno de los valores: %s",
 	"es-ES|eq":           "%s debe ser igual a %s",
+	"es-ES|ne":           "%s no debe ser igual a %s",
+	"es-ES|url":          "%s debe ser una URL válida",
 }

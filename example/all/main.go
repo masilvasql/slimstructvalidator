@@ -13,21 +13,25 @@ func init() {
 func main() {
 
 	type User struct {
-		Name   string `validate:"required,alpha" label:"Name"`
-		Admin  bool   `validate:"eq=false" label:"Admin"`
-		Gender string `validate:"oneOf=Male Female" label:"Gender"`
-		Age    int    `validate:"numeric,min=18,max=65" label:"Age"`
-		Email  string `validate:"email" label:"Email"`
+		Name    string `validate:"required,alpha" label:"Name"`
+		Admin   bool   `validate:"eq=false" label:"Admin"`
+		Gender  string `validate:"oneOf=Male Female" label:"Gender"`
+		Age     int    `validate:"numeric,min=18,max=65" label:"Age"`
+		Email   string `validate:"email" label:"Email"`
+		Type    string `validate:"ne=admin" label:"Type"`
+		WebSite string `validate:"url" label:"WebSite"`
 	}
 
 	sv := slimstructvalidator.New()
 
 	user := User{
-		Name:   "John123",
-		Admin:  true,
-		Gender: "Maleee",
-		Age:    17,
-		Email:  "invalid-email",
+		Name:    "John123",
+		Admin:   true,
+		Gender:  "Maleee",
+		Age:     17,
+		Email:   "invalid-email",
+		Type:    "admin",
+		WebSite: "invalid-url",
 	}
 
 	errs := sv.Validate(user)
