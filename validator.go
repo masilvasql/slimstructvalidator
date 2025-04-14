@@ -6,6 +6,7 @@ import (
 	_ "github.com/masilvasql/slimstructvalidator/rules/alphanum"
 	_ "github.com/masilvasql/slimstructvalidator/rules/email"
 	_ "github.com/masilvasql/slimstructvalidator/rules/equals"
+	_ "github.com/masilvasql/slimstructvalidator/rules/gte"
 	_ "github.com/masilvasql/slimstructvalidator/rules/max"
 	_ "github.com/masilvasql/slimstructvalidator/rules/min"
 	_ "github.com/masilvasql/slimstructvalidator/rules/notequals"

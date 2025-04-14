@@ -23,6 +23,7 @@ var translations = map[string]string{
 	"pt-BR|eq":           "O campo %s deve ser igual a %s",
 	"pt-BR|ne":           "O campo %s não deve ter valor igual a %s",
 	"pt-BR|url":          "O campo %s deve ser uma URL válida",
+	"pt-BR|gte":          "O campo %s deve ser maior ou igual a %s",
 
 	"en-US|required":     "The field %s is required",
 	"en-US|email":        "The field %s must be a valid email address",
@@ -36,6 +37,7 @@ var translations = map[string]string{
 	"en-US|eq":           "The field %s must be equal to %s",
 	"en-US|ne":           "The field %s must not be equal to %s",
 	"en-US|url":          "The field %s must be a valid URL",
+	"en-US|gte":          "The field %s must be greater than or equal to %s",
 
 	"es-ES|required":     "El campo %s es obligatorio",
 	"es-ES|email":        "El campo %s debe ser una dirección de correo electrónico válida",
@@ -49,4 +51,5 @@ var translations = map[string]string{
 	"es-ES|eq":           "El campo %s debe ser igual a %s",
 	"es-ES|ne":           "El campo %s no debe ser igual a %s",
 	"es-ES|url":          "El campo %s debe ser una URL válida",
+	"es-ES|gte":          "El campo %s debe ser mayor o igual a %s",
 }

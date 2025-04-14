@@ -19,6 +19,7 @@ Uma biblioteca Go leve e simples para validação de campos de structs usando ta
     * `oneOf` : Um dos valores permitidos
     * `required`: Campo obrigatório
     * `url` : Permite URLs válidas
+    * `gte` : Maior ou igual ao valor passado na tag
 
 Não precisa da TAG, mas também efetua validação de `nestedstructure` quando uma struct possui outra struct como campo.
 
